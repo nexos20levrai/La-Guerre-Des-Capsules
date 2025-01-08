@@ -1,0 +1,746 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://assets/materials/black-grid.tres" type="Material" id=1]
+[ext_resource path="res://Maps/map01-environment.tres" type="Environment" id=2]
+[ext_resource path="res://assets/materials/orange-grid.tres" type="Material" id=3]
+[ext_resource path="res://assets/materials/light-grid.tres" type="Material" id=4]
+[ext_resource path="res://Maps/scenes/RoofLight.tscn" type="PackedScene" id=5]
+[ext_resource path="res://interface/scenes/HUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Utils/scenes/SpawnPoint.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Maps/scripts/Map.gd" type="Script" id=8]
+[ext_resource path="res://interface/scenes/Lobby.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Maps/scenes/RoofLight-Off.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/audio/kill-sound.wav" type="AudioStream" id=11]
+[ext_resource path="res://Maps/scenes/120-floor.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Maps/scenes/120-wall.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Maps/scenes/building-01.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Maps/scenes/balcony-01.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Maps/scenes/building-02.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Maps/scenes/balcony-02.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Maps/scenes/balcony-01-green.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Maps/scenes/building-03.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Maps/scenes/corridor.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Maps/scenes/tube.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Maps/scenes/container.tscn" type="PackedScene" id=22]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 96.5, 1, 104 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 0.5, 0.25, 4 )
+
+[node name="Game" type="Node"]
+script = ExtResource( 8 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainHUD" parent="CanvasLayer" instance=ExtResource( 6 )]
+visible = false
+
+[node name="Lobby" parent="CanvasLayer" instance=ExtResource( 9 )]
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.802548, 0.00880018, 0.596522, 0, 0.999891, -0.0147509, -0.596587, 0.0118383, 0.802461, 22.5046, 5.15264, 36.0232 )
+current = true
+far = 250.0
+
+[node name="Level" type="Node" parent="."]
+
+[node name="BasicStructure" type="Node" parent="Level"]
+
+[node name="floor" parent="Level/BasicStructure" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0183649, 0.0333304, -0.0705986 )
+
+[node name="120-wall" parent="Level/BasicStructure" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 59.5 )
+
+[node name="120-wall4" parent="Level/BasicStructure" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -59.5 )
+
+[node name="120-wall2" parent="Level/BasicStructure" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -59.5, 0, 7.62939e-06 )
+
+[node name="120-wall3" parent="Level/BasicStructure" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 59.5, 0, 2.42774e-06 )
+
+[node name="120-wall5" parent="Level/BasicStructure" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 59.5 )
+
+[node name="120-wall6" parent="Level/BasicStructure" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, -59.5 )
+
+[node name="120-wall7" parent="Level/BasicStructure" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -59.5, 13, 7.62939e-06 )
+
+[node name="120-wall8" parent="Level/BasicStructure" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 59.5, 13, 2.42774e-06 )
+
+[node name="BuildingStructure" type="Node" parent="Level"]
+
+[node name="building-01" parent="Level/BuildingStructure" instance=ExtResource( 14 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 0, 0 )
+
+[node name="balcony-01" parent="Level/BuildingStructure" instance=ExtResource( 18 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 43.5, 12, -19 )
+
+[node name="balcony-02" parent="Level/BuildingStructure" instance=ExtResource( 18 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 43.5, 12, -35 )
+
+[node name="balcony-03" parent="Level/BuildingStructure" instance=ExtResource( 15 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -12, 12, 30 )
+
+[node name="building-02" parent="Level/BuildingStructure" instance=ExtResource( 16 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -21, 1, 30 )
+
+[node name="balcony-04" parent="Level/BuildingStructure" instance=ExtResource( 17 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 12, 30 )
+
+[node name="building-03" parent="Level/BuildingStructure" instance=ExtResource( 19 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -45, 1, -4 )
+
+[node name="corridor" parent="Level/BuildingStructure" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.841546, 0 )
+
+[node name="Props" type="Node" parent="Level"]
+
+[node name="tube" parent="Level/Props" instance=ExtResource( 21 )]
+transform = Transform( 0.666506, 0, 0.745499, 0, 1, 0, -0.745499, 0, 0.666506, 22.5198, 1, -35.5551 )
+
+[node name="container" parent="Level/Props" instance=ExtResource( 22 )]
+transform = Transform( -0.810021, 0, 0.586401, 0, 1, 0, -0.586401, 0, -0.810021, 34.554, 1, 27.5629 )
+
+[node name="CSGCombiner2" type="CSGCombiner" parent="Level" groups=[
+"World",
+]]
+use_in_baked_light = true
+use_collision = true
+collision_layer = 2
+collision_mask = 5
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CSGPolygon5" type="CSGPolygon" parent="Level/CSGCombiner2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 1, 58 )
+use_in_baked_light = true
+polygon = PoolVector2Array( -10, 0, -10, 13, 7, 0, 3, 0 )
+depth = 5.0
+material = ExtResource( 4 )
+
+[node name="CSGPolygon4" type="CSGPolygon" parent="Level/CSGCombiner2"]
+transform = Transform( 1.41561e-07, 0, 1, 0, 1, 0, -1, 0, 1.41561e-07, -53, 1, -10.75 )
+use_in_baked_light = true
+polygon = PoolVector2Array( -6.75, 0, -6.75, 13, 12, 0, 3, 0 )
+depth = 5.0
+material = ExtResource( 4 )
+
+[node name="CSGPolygon6" type="CSGPolygon" parent="Level/CSGCombiner2"]
+transform = Transform( -5.41382e-08, 0, -1, 0, 1, 0, 1, 0, -5.41382e-08, 53, 1, 8 )
+use_in_baked_light = true
+polygon = PoolVector2Array( -7, 0, -7, 13, 12, 0, 3, 0 )
+depth = 6.0
+material = ExtResource( 4 )
+
+[node name="CSGPolygon2" type="CSGPolygon" parent="Level/CSGCombiner2"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -18, 1, -11 )
+use_in_baked_light = true
+polygon = PoolVector2Array( -7, 0, -7, 13, 8, 0, 3, 0 )
+depth = 5.0
+material = ExtResource( 4 )
+
+[node name="CSGPolygon" type="CSGPolygon" parent="Level/CSGCombiner2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5, 1, 11 )
+use_in_baked_light = true
+polygon = PoolVector2Array( -6.5, 0, -6.5, 13, 7.5, 0, 3, 0 )
+depth = 5.0
+material = ExtResource( 4 )
+
+[node name="CSGBox" type="CSGBox" parent="Level/CSGCombiner2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.25, 13.5, -3 )
+use_in_baked_light = true
+width = 32.5
+height = 1.0
+depth = 6.0
+material = ExtResource( 1 )
+
+[node name="CSGBox58" type="CSGBox" parent="Level/CSGCombiner2"]
+transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 7.5, 15.5, -9.5 )
+use_in_baked_light = true
+width = 1.0
+height = 3.0
+depth = 6.0
+material = ExtResource( 4 )
+
+[node name="CSGBox59" type="CSGBox" parent="Level/CSGCombiner2"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -9.5, 15.5, 7 )
+use_in_baked_light = true
+width = 1.0
+height = 3.0
+depth = 6.0
+material = ExtResource( 4 )
+
+[node name="CSGBox2" type="CSGBox" parent="Level/CSGCombiner2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 13.5, 0 )
+use_in_baked_light = true
+width = 34.0
+height = 1.0
+depth = 8.0
+material = ExtResource( 1 )
+
+[node name="CSGBridge1" type="CSGBox" parent="Level/CSGCombiner2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 13.5, 37 )
+use_in_baked_light = true
+width = 24.0
+height = 1.0
+depth = 6.0
+material = ExtResource( 1 )
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Level/CSGCombiner2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.5, 0 )
+use_in_baked_light = true
+radius = 4.5
+height = 15.0
+smooth_faces = false
+material = ExtResource( 3 )
+
+[node name="CSGBox7" type="CSGBox" parent="Level/CSGCombiner2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, 7, -37 )
+use_in_baked_light = true
+width = 14.0
+height = 12.0
+material = ExtResource( 1 )
+
+[node name="CSGCombiner3" type="CSGCombiner" parent="Level" groups=[
+"World",
+]]
+use_in_baked_light = true
+use_collision = true
+collision_layer = 2
+collision_mask = 5
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CSGBox52" type="CSGBox" parent="Level/CSGCombiner3"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -40.5, 15.5, -3.5 )
+use_in_baked_light = true
+width = 1.0
+height = 3.0
+depth = 7.0
+material = ExtResource( 4 )
+
+[node name="CSGBox53" type="CSGBox" parent="Level/CSGCombiner3"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24, 15.5, -3.5 )
+use_in_baked_light = true
+width = 1.0
+height = 3.0
+depth = 7.0
+material = ExtResource( 4 )
+
+[node name="CSGBox55" type="CSGBox" parent="Level/CSGCombiner3"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18, 15.5, -0.5 )
+use_in_baked_light = true
+width = 1.0
+height = 3.0
+depth = 7.0
+material = ExtResource( 4 )
+
+[node name="CSGBox56" type="CSGBox" parent="Level/CSGCombiner3"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 34.5, 15.5, -0.5 )
+use_in_baked_light = true
+width = 1.0
+height = 3.0
+depth = 7.0
+material = ExtResource( 4 )
+
+[node name="CSGBox2" type="CSGBox" parent="Level/CSGCombiner3"]
+transform = Transform( 0.939693, 0.34202, -1.49502e-08, 0, -4.37114e-08, -1, -0.34202, 0.939693, -4.10753e-08, -31.5, 2, -30.5 )
+use_in_baked_light = true
+height = 12.0
+material = ExtResource( 1 )
+
+[node name="CSGBox19" type="CSGBox" parent="Level/CSGCombiner3"]
+transform = Transform( 0.628832, 0.777541, 3.39874e-08, 0, -4.37114e-08, 1, 0.777541, -0.628832, -2.74871e-08, 1.72058, 2, -43.8693 )
+use_in_baked_light = true
+height = 12.0
+material = ExtResource( 1 )
+
+[node name="CSGBox5" type="CSGBox" parent="Level/CSGCombiner3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 7, -49 )
+use_in_baked_light = true
+height = 12.0
+material = ExtResource( 1 )
+
+[node name="CSGBox9" type="CSGBox" parent="Level/CSGCombiner3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2.5, -49 )
+use_in_baked_light = true
+width = 10.0
+height = 3.0
+material = ExtResource( 1 )
+
+[node name="CSGBox10" type="CSGBox" parent="Level/CSGCombiner3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 2.5, -49 )
+use_in_baked_light = true
+width = 10.0
+height = 3.0
+material = ExtResource( 1 )
+
+[node name="CSGBox11" type="CSGBox" parent="Level/CSGCombiner3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 2.5, -49 )
+use_in_baked_light = true
+width = 10.0
+height = 3.0
+material = ExtResource( 1 )
+
+[node name="CSGBox12" type="CSGBox" parent="Level/CSGCombiner3"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -45, 2.5, -42.5 )
+use_in_baked_light = true
+width = 11.0
+height = 3.0
+material = ExtResource( 1 )
+
+[node name="CSGBox13" type="CSGBox" parent="Level/CSGCombiner3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 11, -49 )
+use_in_baked_light = true
+width = 10.0
+height = 4.0
+material = ExtResource( 1 )
+
+[node name="CSGBox18" type="CSGBox" parent="Level/CSGCombiner3"]
+transform = Transform( 0.765517, 0.433345, 0.475601, -0.536495, 0.0218535, 0.843621, 0.355185, -0.900963, 0.249217, -0.99687, 7.0621, -44.6294 )
+use_in_baked_light = true
+width = 19.0
+height = 4.0
+material = ExtResource( 1 )
+
+[node name="CSGBox14" type="CSGBox" parent="Level/CSGCombiner3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 11, -49 )
+use_in_baked_light = true
+width = 10.0
+height = 4.0
+material = ExtResource( 1 )
+
+[node name="CSGBox15" type="CSGBox" parent="Level/CSGCombiner3"]
+transform = Transform( 0.819152, -0.573576, 0, 0.573576, 0.819152, 0, 0, 0, 1, -39, 8.5, -49 )
+use_in_baked_light = true
+width = 10.0
+height = 4.0
+material = ExtResource( 1 )
+
+[node name="CSGBox16" type="CSGBox" parent="Level/CSGCombiner3"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -45, 11, -42.5 )
+use_in_baked_light = true
+width = 11.0
+height = 4.0
+material = ExtResource( 1 )
+
+[node name="CSGBox6" type="CSGBox" parent="Level/CSGCombiner3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 7, -49 )
+use_in_baked_light = true
+height = 12.0
+material = ExtResource( 1 )
+
+[node name="CSGBox7" type="CSGBox" parent="Level/CSGCombiner3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 7, -49 )
+use_in_baked_light = true
+height = 12.0
+material = ExtResource( 1 )
+
+[node name="CSGBox17" type="CSGBox" parent="Level/CSGCombiner3"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -33, 10, -54.5 )
+use_in_baked_light = true
+height = 9.0
+material = ExtResource( 1 )
+
+[node name="CSGBox20" type="CSGBox" parent="Level/CSGCombiner3"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -45, 7, -36.25 )
+use_in_baked_light = true
+height = 12.0
+material = ExtResource( 1 )
+
+[node name="CSGBox8" type="CSGBox" parent="Level/CSGCombiner3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 7, -49 )
+use_in_baked_light = true
+height = 12.0
+material = ExtResource( 1 )
+
+[node name="CSGCombiner4" type="CSGCombiner" parent="Level" groups=[
+"World",
+]]
+use_in_baked_light = true
+use_collision = true
+collision_layer = 2
+collision_mask = 5
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CSGBox" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 38, 2.05, -14.95 )
+use_in_baked_light = true
+width = 3.0
+height = 4.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox17" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( 1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -8, 2.05, -11.45 )
+use_in_baked_light = true
+width = 3.0
+height = 4.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox27" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( 1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -13.5, 2.05, -56.45 )
+use_in_baked_light = true
+width = 3.0
+height = 4.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox29" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( 0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, -17.5, 2.05, -56.45 )
+use_in_baked_light = true
+width = 3.0
+height = 4.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox30" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( 0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, 0.819152, -26.9864, 2.05, -56.45 )
+use_in_baked_light = true
+width = 3.0
+height = 4.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox31" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( 1, 0, -2.98023e-08, -2.9856e-10, 0.99995, -0.010018, 2.98008e-08, 0.010018, 0.99995, -26.9864, 5.55, -56.45 )
+use_in_baked_light = true
+width = 3.0
+height = 3.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox28" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( 0.766044, 0, -0.642788, 0, 1, 0, 0.642788, 0, 0.766044, -47.2988, 2.05, -51.0128 )
+use_in_baked_light = true
+width = 3.0
+height = 4.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox19" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( 0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -6, 2.05, -14.95 )
+use_in_baked_light = true
+width = 3.0
+height = 4.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox20" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( 0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, -9.5, 2.05, -15.45 )
+use_in_baked_light = true
+width = 3.0
+height = 4.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox18" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( 0.819152, 0, 0.573576, 0, 1, 0, -0.573576, 0, 0.819152, -8, 5.55, -13.45 )
+use_in_baked_light = true
+width = 3.0
+height = 3.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox11" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( -5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -3.5, 15.4454, 50.05 )
+use_in_baked_light = true
+height = 3.0
+depth = 7.0
+material = ExtResource( 3 )
+
+[node name="CSGBox12" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( -5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -14, 15.4619, 50.05 )
+use_in_baked_light = true
+height = 3.0
+depth = 7.0
+material = ExtResource( 3 )
+
+[node name="CSGBox13" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( -5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -3.5, 15.4919, 38.05 )
+use_in_baked_light = true
+height = 3.0
+depth = 7.0
+material = ExtResource( 3 )
+
+[node name="CSGBox14" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( -5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -14, 15.494, 38.05 )
+use_in_baked_light = true
+height = 3.0
+depth = 7.0
+material = ExtResource( 3 )
+
+[node name="CSGBox9" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( -5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -8, 2.05, 37.23 )
+use_in_baked_light = true
+width = 1.0
+depth = 17.0
+material = ExtResource( 3 )
+
+[node name="CSGBox10" type="CSGBox" parent="Level/CSGCombiner4/CSGBox9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+use_in_baked_light = true
+width = 3.0
+height = 1.0
+depth = 18.0
+material = ExtResource( 3 )
+
+[node name="CSGBox2" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( 0.996195, 0, 0.0871557, 0, 1, 0, -0.0871557, 0, 0.996195, 41.5, 2.05, -13.45 )
+use_in_baked_light = true
+width = 3.0
+height = 4.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox3" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( 0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 40, 5.55, -13.95 )
+use_in_baked_light = true
+width = 3.0
+height = 3.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox21" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 53, 15.4435, -38.95 )
+use_in_baked_light = true
+width = 3.0
+height = 4.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox22" type="CSGBox" parent="Level/CSGCombiner4/CSGBox21"]
+transform = Transform( 0.819153, 0, 0.573577, 0, 1, 0, -0.573577, 0, 0.819153, 3.78109, 0, -0.450962 )
+use_in_baked_light = true
+width = 3.0
+height = 4.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox23" type="CSGBox" parent="Level/CSGCombiner4/CSGBox21"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 1.36603, 3.5, 0.366024 )
+use_in_baked_light = true
+width = 3.0
+height = 3.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox24" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( 0.996195, 0, 0.0871557, 0, 1, 0, -0.0871557, 0, 0.996195, 56, 15.55, -7.45 )
+use_in_baked_light = true
+width = 3.0
+height = 3.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox6" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( -0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -39.1095, 2.05, 29.3245 )
+use_in_baked_light = true
+width = 3.0
+height = 4.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox7" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( -0.906265, 0.00979114, 0.422598, 0.00887379, 0.999952, -0.00413791, -0.422618, 0, -0.906308, -41.3905, 2.05, 26.2755 )
+use_in_baked_light = true
+width = 3.0
+height = 4.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox15" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( 0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, 0.34202, -42.6792, 2.07778, -5.84356 )
+use_in_baked_light = true
+width = 3.0
+height = 4.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox16" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -41.8098, 2.07778, -9.55085 )
+use_in_baked_light = true
+width = 3.0
+height = 4.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox8" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( -0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -40.3415, 5.55, 27.4585 )
+use_in_baked_light = true
+width = 3.0
+height = 3.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox32" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( -0.819152, 0, 0.573576, 0, 1, 0, -0.573576, 0, -0.819152, -53.6052, 2.05, 21.0222 )
+use_in_baked_light = true
+width = 3.0
+height = 4.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox33" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( -0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, -0.984808, -56.0276, 2.05, 18.6226 )
+use_in_baked_light = true
+width = 3.0
+height = 4.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox34" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( -0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -53.8772, 5.55, 20.9846 )
+use_in_baked_light = true
+width = 3.0
+height = 3.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox4" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( 0.910553, 0, -0.413391, 0, 1, 0, 0.413391, 0, 0.910553, 36.0095, 2.05, 47.2717 )
+use_in_baked_light = true
+width = 3.0
+height = 4.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox5" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( 0.982993, 0, 0.183643, 0, 1, 0, -0.183643, 0, 0.982993, 39.9905, 2.05, 46.8826 )
+use_in_baked_light = true
+width = 3.0
+height = 4.0
+depth = 3.0
+material = ExtResource( 3 )
+
+[node name="CSGBox61" type="CSGBox" parent="Level/CSGCombiner4"]
+transform = Transform( 0.340678, 0.215775, -0.915085, -0.697659, 0.710471, -0.0922053, 0.630246, 0.66983, 0.392579, -38.9866, 8.50664, 45.9666 )
+use_in_baked_light = true
+width = 20.0
+height = 1.0
+depth = 5.0
+material = ExtResource( 3 )
+
+[node name="Players" type="Node" parent="."]
+
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="SP1" parent="SpawnPoints" instance=ExtResource( 7 )]
+transform = Transform( 0.688013, 0, -0.725698, 0, 1, 0, 0.725698, 0, 0.688013, -53.89, 1, 53.373 )
+
+[node name="SP4" parent="SpawnPoints" instance=ExtResource( 7 )]
+transform = Transform( 0.0314978, 0, 0.999504, 0, 1, 0, -0.999504, 0, 0.0314978, 27.28, 1, 47.402 )
+
+[node name="SP2" parent="SpawnPoints" instance=ExtResource( 7 )]
+transform = Transform( -0.426047, 0, 0.904701, 0, 1, 0, -0.904701, 0, -0.426047, 40.013, 1, -21.413 )
+
+[node name="SP3" parent="SpawnPoints" instance=ExtResource( 7 )]
+transform = Transform( -0.187107, 0, -0.98234, 0, 1, 0, 0.98234, 0, -0.187107, -21.425, 1, -43.318 )
+
+[node name="SP10" parent="SpawnPoints" instance=ExtResource( 7 )]
+transform = Transform( 0.998538, 0, 0.0540613, 0, 1, 0, -0.0540613, 0, 0.998538, 3.39701, 1, 38.952 )
+
+[node name="SP9" parent="SpawnPoints" instance=ExtResource( 7 )]
+transform = Transform( -0.0510807, 0, 0.998695, 0, 1, 0, -0.998695, 0, -0.0510807, 55.908, 1, -54.492 )
+
+[node name="SP6" parent="SpawnPoints" instance=ExtResource( 7 )]
+transform = Transform( -0.966295, 0, -0.257436, 0, 1, 0, 0.257436, 0, -0.966295, -52.464, 1, -55.48 )
+
+[node name="SP8" parent="SpawnPoints" instance=ExtResource( 7 )]
+transform = Transform( 0.767747, 0, -0.640753, 0, 1, 0, 0.640753, 0, 0.767747, -55.374, 14, 25.946 )
+
+[node name="SP11" parent="SpawnPoints" instance=ExtResource( 7 )]
+transform = Transform( -0.431928, 0, -0.901908, 0, 1, 0, 0.901908, 0, -0.431928, -55.374, 14, -2.03373 )
+
+[node name="SP7" parent="SpawnPoints" instance=ExtResource( 7 )]
+transform = Transform( 0.15659, 0, -0.987664, 0, 1, 0, 0.987664, 0, 0.15659, -13.916, 14, 53.865 )
+
+[node name="SP12" parent="SpawnPoints" instance=ExtResource( 7 )]
+transform = Transform( -0.0658043, 0, 0.997833, 0, 1, 0, -0.997833, 0, -0.0658043, 50.037, 14, 48.2724 )
+
+[node name="SP5" parent="SpawnPoints" instance=ExtResource( 7 )]
+transform = Transform( -0.843325, 0, 0.537403, 0, 1, 0, -0.537403, 0, -0.843325, 56.746, 14, -52.93 )
+
+[node name="DeathArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14, 0 )
+monitorable = false
+collision_layer = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="DeathArea"]
+shape = SubResource( 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 2 )
+
+[node name="Lights" type="Node" parent="."]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Lights"]
+transform = Transform( -0.724388, 0.470296, -0.504066, 0, 0.731175, 0.68219, 0.689392, 0.494171, -0.529655, 0, 26.2461, -30.6581 )
+light_color = Color( 0.94902, 0.854902, 0.780392, 1 )
+light_energy = 2.93
+shadow_enabled = true
+
+[node name="RoofLight6" parent="Lights" instance=ExtResource( 5 )]
+transform = Transform( 1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 51.45, 22.55, -58.9 )
+
+[node name="RoofLight7" parent="Lights" instance=ExtResource( 5 )]
+transform = Transform( 1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 51.45, 9.75, -58.9 )
+
+[node name="RoofLight2" parent="Lights" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, -1, 8.35187e-23, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1.91069e-15, 1, -19.899, 24.4745, 37.2509 )
+
+[node name="RoofLight-Off2" parent="Lights" instance=ExtResource( 10 )]
+transform = Transform( -4.37114e-08, 1, 8.35187e-23, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1.91069e-15, 1, 7.87082, 11.3294, 36.9805 )
+visible = false
+
+[node name="RoofLight3" parent="Lights" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 1, 8.35187e-23, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1.91069e-15, 1, 7.88054, 11.3294, 36.9185 )
+
+[node name="RoofLight-Off" parent="Lights" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -51.2302, 12.8137, 8.4 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="RoofLight8" parent="Lights" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -51.2302, 12.8137, 22.3 )
+
+[node name="RoofLight4" parent="Lights" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, -6.3, 11, 45.1029 )
+
+[node name="RoofLight9" parent="Lights" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, -57.8, 21.75, 11.668 )
+
+[node name="RoofLight5" parent="Lights" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, 48.8, 10.9431, 45.0959 )
+
+[node name="FadeInTween" type="Tween" parent="."]
+
+[node name="FadeOutTween" type="Tween" parent="."]
+
+[node name="MusicPlayerA" type="AudioStreamPlayer" parent="."]
+volume_db = -30.0
+
+[node name="MusicPlayerB" type="AudioStreamPlayer" parent="."]
+volume_db = -30.0
+
+[node name="KillSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+[connection signal="_on_player_can_spawn" from="CanvasLayer/MainHUD" to="." method="_on_player_can_spawn"]
+[connection signal="on_exit_to_lobby" from="CanvasLayer/MainHUD" to="CanvasLayer/Lobby" method="_on_exit_to_lobby"]
+[connection signal="on_game_begin" from="CanvasLayer/Lobby" to="." method="_on_game_begin"]
+[connection signal="on_game_begin" from="CanvasLayer/Lobby" to="CanvasLayer/MainHUD" method="_on_game_begin"]
+[connection signal="body_entered" from="DeathArea" to="." method="_on_DeathArea_body_entered"]
+[connection signal="tween_completed" from="FadeOutTween" to="." method="_on_FadeOutTween_tween_completed"]

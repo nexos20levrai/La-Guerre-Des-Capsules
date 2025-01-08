@@ -1,0 +1,88 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://interface/resources/HUDBigFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://interface/resources/HUDSmallFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://interface/scripts/Credits.gd" type="Script" id=4]
+
+[node name="Credits" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="MainContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.55103
+margin_top = -241.632
+margin_right = 7.55103
+margin_bottom = 204.368
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VContainer" type="VBoxContainer" parent="MainContainer"]
+margin_left = 784.0
+margin_top = 724.0
+margin_right = 1136.0
+margin_bottom = 802.0
+custom_constants/separation = 80
+
+[node name="CreatorContainer" type="VBoxContainer" parent="MainContainer/VContainer"]
+margin_right = 352.0
+margin_bottom = 78.0
+size_flags_horizontal = 3
+custom_constants/separation = 10
+
+[node name="Label" type="Label" parent="MainContainer/VContainer/CreatorContainer"]
+modulate = Color( 0.545098, 0.521569, 0.521569, 1 )
+margin_right = 352.0
+margin_bottom = 27.0
+custom_fonts/font = ExtResource( 3 )
+text = "Conception et programmation par"
+align = 1
+
+[node name="Label2" type="Label" parent="MainContainer/VContainer/CreatorContainer"]
+margin_top = 37.0
+margin_right = 352.0
+margin_bottom = 78.0
+custom_fonts/font = ExtResource( 1 )
+text = "NeXoS_20 et Arka Ui"
+align = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -100.0
+custom_constants/margin_right = 70
+custom_constants/margin_bottom = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_right = 1850.0
+margin_bottom = 50.0
+alignment = 2
+
+[node name="BackButton" type="Button" parent="MarginContainer/HBoxContainer"]
+margin_left = 1725.0
+margin_right = 1850.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 125, 50 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 3 )
+text = "Retour"
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
