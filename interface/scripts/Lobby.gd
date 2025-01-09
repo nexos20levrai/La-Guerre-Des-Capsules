@@ -330,6 +330,22 @@ func _on_server_created():
 	game_type = SERVER
 	show_character_options()
 	append_log("Vous hébergez le jeu.")
+	
+	# Ajout de la requête pour obtenir l'IP externe
+	var http_request = HTTPRequest.new()
+	add_child(http_request)
+	http_request.connect("request_completed", self, "_on_ip_request_completed")
+	var http_error = http_request.request("https://api.ipify.org")
+	if http_error != OK:
+		append_log("Erreur lors de la requête pour obtenir l'IP externe.")
+
+func _on_ip_request_completed(result, response_code, headers, body):
+	if response_code == 200:
+		var ip_address = body.get_string_from_utf8()
+		append_log("Serveur disponible à l'IP %s" % ip_address)  # Affiche seulement l'IP publique
+	else:
+		append_log("Impossible d'obtenir l'IP externe, code réponse : %d" % response_code)
+
 
 func _on_connected_to_server():
 	join_button.text = "Rejoint"
@@ -383,7 +399,7 @@ func _on_CancelButton_pressed():
 			append_log("Fermeture du serveur...")
 			yield(get_tree().create_timer(0.1),"timeout")
 			Network.clear_mapped_ports()
-			append_log("Server terminated.")
+			append_log("Serveur fermé.")
 	join_button.text = "Rejoindre"
 	host_button.text = "Heberger"
 	hide_containers(true)

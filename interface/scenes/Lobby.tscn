@@ -48,7 +48,7 @@ margin_right = 1820.0
 margin_bottom = 111.0
 
 [node name="Label" type="Label" parent="MainContainer/VBoxContainer/TitleContainer"]
-margin_right = 1705.0
+margin_right = 1727.0
 margin_bottom = 111.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 6 )
@@ -56,12 +56,12 @@ text = "La Guerre Des Capsules"
 
 [node name="Label2" type="Label" parent="MainContainer/VBoxContainer/TitleContainer"]
 modulate = Color( 0.545098, 0.545098, 0.545098, 1 )
-margin_left = 1709.0
+margin_left = 1731.0
 margin_right = 1820.0
 margin_bottom = 111.0
 size_flags_vertical = 5
 custom_fonts/font = ExtResource( 2 )
-text = "v 1.0.4 beta"
+text = "v0.1 beta"
 valign = 2
 
 [node name="HSeparator" type="HSeparator" parent="MainContainer/VBoxContainer"]
@@ -119,7 +119,7 @@ focus_neighbour_bottom = NodePath("../../../Menu2Container/SettingContainer/Came
 focus_next = NodePath("../../../Menu2Container/SettingContainer/CameraContainer/HBoxContainer/CameraSlider")
 focus_previous = NodePath("../HostAGameButton")
 custom_fonts/font = ExtResource( 2 )
-text = "Rejoindre une oartie"
+text = "Rejoindre une partie"
 
 [node name="TypeContainer" type="VBoxContainer" parent="MainContainer/VBoxContainer/MenuContainer"]
 visible = false
@@ -133,7 +133,7 @@ custom_constants/separation = 15
 margin_right = 350.0
 margin_bottom = 41.0
 custom_fonts/font = ExtResource( 3 )
-text = "Host/Join"
+text = "Héberger/Rejoindre"
 
 [node name="HSeparator2" type="HSeparator" parent="MainContainer/VBoxContainer/MenuContainer/TypeContainer"]
 margin_top = 56.0
@@ -150,7 +150,7 @@ margin_top = 5.0
 margin_right = 23.0
 margin_bottom = 32.0
 custom_fonts/font = ExtResource( 2 )
-text = "ID:"
+text = "Pseudo:"
 
 [node name="IDText" type="LineEdit" parent="MainContainer/VBoxContainer/MenuContainer/TypeContainer/IDName"]
 margin_left = 27.0
@@ -171,7 +171,7 @@ margin_top = -73.0
 margin_right = -154.0
 margin_bottom = -46.0
 custom_fonts/font = ExtResource( 2 )
-text = "ID Needed"
+text = "Merci de mettre un pseudo"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -211,18 +211,20 @@ margin_top = 179.0
 margin_right = 300.0
 margin_bottom = 206.0
 custom_fonts/font = ExtResource( 2 )
-text = "Invalid IP"
+text = "IP Invalide"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HostPort" type="HBoxContainer" parent="MainContainer/VBoxContainer/MenuContainer/TypeContainer"]
+visible = false
 margin_top = 179.0
 margin_right = 350.0
 margin_bottom = 216.0
 
 [node name="PortLabel" type="Label" parent="MainContainer/VBoxContainer/MenuContainer/TypeContainer/HostPort"]
+visible = false
 margin_top = 5.0
 margin_right = 49.0
 margin_bottom = 32.0
@@ -230,6 +232,7 @@ custom_fonts/font = ExtResource( 2 )
 text = "Port:"
 
 [node name="HostPortText" type="LineEdit" parent="MainContainer/VBoxContainer/MenuContainer/TypeContainer/HostPort"]
+visible = false
 margin_left = 53.0
 margin_right = 350.0
 margin_bottom = 37.0
@@ -260,7 +263,8 @@ margin_bottom = 271.0
 focus_neighbour_top = NodePath("../HostPort/HostPortText")
 focus_previous = NodePath("../HostPort/HostPortText")
 theme = ExtResource( 4 )
-text = "Use UPnP"
+pressed = true
+text = "Utiliser UPnP"
 flat = true
 align = 2
 expand_icon = true
@@ -276,7 +280,7 @@ focus_neighbour_bottom = NodePath("../CancelButton")
 focus_next = NodePath("../CancelButton")
 focus_previous = NodePath("../UpnpButton")
 custom_fonts/font = ExtResource( 2 )
-text = "Host"
+text = "Heberger"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -292,7 +296,7 @@ focus_neighbour_bottom = NodePath("../CancelButton")
 focus_next = NodePath("../CancelButton")
 focus_previous = NodePath("../HostPort/HostPortText")
 custom_fonts/font = ExtResource( 2 )
-text = "Join"
+text = "Rejoindre"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -305,7 +309,7 @@ rect_min_size = Vector2( 0, 60 )
 focus_neighbour_bottom = NodePath("../../../Menu2Container/SettingContainer/CameraContainer/HBoxContainer/CameraSlider")
 focus_next = NodePath("../../LooksContainer/ColorPicker/ColorOption")
 custom_fonts/font = ExtResource( 2 )
-text = "Cancel"
+text = "Annuler"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -328,7 +332,7 @@ custom_constants/separation = 15
 margin_right = 350.0
 margin_bottom = 41.0
 custom_fonts/font = ExtResource( 3 )
-text = "Appearance"
+text = "Apparence"
 
 [node name="HSeparator2" type="HSeparator" parent="MainContainer/VBoxContainer/MenuContainer/LooksContainer"]
 margin_top = 56.0
@@ -345,7 +349,7 @@ margin_top = 3.0
 margin_right = 57.0
 margin_bottom = 30.0
 custom_fonts/font = ExtResource( 2 )
-text = "Color:"
+text = "Couleur:"
 
 [node name="ColorOption" type="OptionButton" parent="MainContainer/VBoxContainer/MenuContainer/LooksContainer/ColorPicker"]
 margin_left = 61.0
@@ -364,15 +368,15 @@ toggle_mode = false
 
 [node name="LoadoutSeparator" type="VSeparator" parent="MainContainer/VBoxContainer/MenuContainer"]
 visible = false
-margin_left = 1125.0
-margin_right = 1129.0
-margin_bottom = 496.0
+margin_left = 375.0
+margin_right = 379.0
+margin_bottom = 450.0
 
 [node name="LoadoutContainer" type="VBoxContainer" parent="MainContainer/VBoxContainer/MenuContainer"]
 visible = false
-margin_left = 750.0
-margin_right = 1100.0
-margin_bottom = 496.0
+margin_left = 375.0
+margin_right = 725.0
+margin_bottom = 450.0
 rect_min_size = Vector2( 350, 0 )
 custom_constants/separation = 15
 
@@ -380,7 +384,7 @@ custom_constants/separation = 15
 margin_right = 350.0
 margin_bottom = 41.0
 custom_fonts/font = ExtResource( 3 )
-text = "Loadout"
+text = "Equipement"
 
 [node name="HSeparator" type="HSeparator" parent="MainContainer/VBoxContainer/MenuContainer/LoadoutContainer"]
 margin_top = 56.0
@@ -392,7 +396,7 @@ margin_top = 75.0
 margin_right = 350.0
 margin_bottom = 102.0
 custom_fonts/font = ExtResource( 2 )
-text = "Primary Weapon:"
+text = "Arme Primaire:"
 
 [node name="PrimaryOption" type="OptionButton" parent="MainContainer/VBoxContainer/MenuContainer/LoadoutContainer"]
 margin_top = 117.0
@@ -414,7 +418,7 @@ margin_top = 165.0
 margin_right = 350.0
 margin_bottom = 192.0
 custom_fonts/font = ExtResource( 2 )
-text = "Secondary Weapon:"
+text = "Arme Secondaire:"
 
 [node name="SecondaryOption" type="OptionButton" parent="MainContainer/VBoxContainer/MenuContainer/LoadoutContainer"]
 margin_top = 207.0
@@ -434,13 +438,13 @@ toggle_mode = false
 
 [node name="FinalSeparator" type="VSeparator" parent="MainContainer/VBoxContainer/MenuContainer"]
 visible = false
-margin_left = 1387.0
-margin_right = 1391.0
-margin_bottom = 400.0
+margin_left = 779.0
+margin_right = 783.0
+margin_bottom = 450.0
 
 [node name="FinalContainer" type="VBoxContainer" parent="MainContainer/VBoxContainer/MenuContainer"]
 visible = false
-margin_left = 375.0
+margin_left = 808.0
 margin_right = 1820.0
 margin_bottom = 450.0
 size_flags_horizontal = 3
@@ -448,7 +452,7 @@ size_flags_vertical = 3
 custom_constants/separation = 20
 
 [node name="BeginButton" type="Button" parent="MainContainer/VBoxContainer/MenuContainer/FinalContainer"]
-margin_right = 1445.0
+margin_right = 1012.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 0, 100 )
 focus_neighbour_left = NodePath("../../LoadoutContainer/PrimaryOption")
@@ -456,7 +460,7 @@ focus_neighbour_bottom = NodePath("../../../Menu2Container/SettingContainer/Came
 focus_next = NodePath("../../../Menu2Container/SettingContainer/CameraContainer/HBoxContainer/CameraSlider")
 focus_previous = NodePath("../../LoadoutContainer/PrimaryOption")
 custom_fonts/font = ExtResource( 3 )
-text = "Begin"
+text = "Commencer"
 
 [node name="Menu2Container" type="HBoxContainer" parent="MainContainer/VBoxContainer"]
 margin_top = 610.0
