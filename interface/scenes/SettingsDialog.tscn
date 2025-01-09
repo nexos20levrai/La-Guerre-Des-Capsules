@@ -1,11 +1,20 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://interface/scripts/SettingsDialog.gd" type="Script" id=1]
 [ext_resource path="res://interface/resources/HUDSmallFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/zekton rg.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 22
+font_data = ExtResource( 3 )
 
 [node name="SettingsDialog" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -461.034
+margin_top = -59.397
+margin_right = -461.034
+margin_bottom = -59.397
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 25
@@ -27,6 +36,7 @@ custom_constants/separation = 15
 [node name="Label" type="Label" parent="CameraContainer"]
 margin_right = 1920.0
 margin_bottom = 27.0
+rect_pivot_offset = Vector2( 445.293, 27 )
 custom_fonts/font = ExtResource( 2 )
 text = "Sensibilité de la caméra"
 __meta__ = {
@@ -60,10 +70,61 @@ __meta__ = {
 margin_left = 1875.0
 margin_right = 1920.0
 margin_bottom = 27.0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "0.05"
 align = 2
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="VolumeContainer" type="VBoxContainer" parent="."]
+margin_top = 94.0
+margin_right = 1920.0
+margin_bottom = 163.0
+custom_constants/separation = 15
+
+[node name="Label" type="Label" parent="VolumeContainer"]
+margin_right = 1920.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( 445.293, 27 )
+custom_fonts/font = ExtResource( 2 )
+text = "Volume"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VolumeContainer"]
+margin_top = 42.0
+margin_right = 1920.0
+margin_bottom = 69.0
+custom_constants/separation = 20
+
+[node name="AudioSlider" type="HSlider" parent="VolumeContainer/HBoxContainer"]
+margin_right = 1847.0
+margin_bottom = 27.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_previous = NodePath(".")
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = -30.0
+max_value = 0.0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="AudioLabel" type="Label" parent="VolumeContainer/HBoxContainer"]
+margin_left = 1867.0
+margin_right = 1920.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 1 )
+text = "100%"
+align = 2
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Node" type="Node" parent="."]
 [connection signal="value_changed" from="CameraContainer/HBoxContainer/CameraSlider" to="." method="_on_CameraSlider_value_changed"]
+[connection signal="value_changed" from="VolumeContainer/HBoxContainer/AudioSlider" to="." method="_on_AudioSlider_value_changed"]
