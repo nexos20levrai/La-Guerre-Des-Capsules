@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libpulse0 xvfb zip wget
+          sudo apt-get install -y libpulse0 xvfb zip unzip wget
 
       - name: Download Godot Engine
         run: |
@@ -29,7 +29,7 @@ jobs:
         run: |
           wget https://github.com/godotengine/godot-builds/releases/download/3.2.3-stable/Godot_v3.2.3-stable_export_templates.tpz
           mkdir -p ~/.local/share/godot/templates/3.2.3.stable/
-          tar -xvf Godot_v3.2.3-stable_export_templates.tpz -C ~/.local/share/godot/templates/3.2.3.stable/
+          unzip Godot_v3.2.3-stable_export_templates.tpz -d ~/.local/share/godot/templates/3.2.3.stable/
 
       - name: Build the project
         run: |
