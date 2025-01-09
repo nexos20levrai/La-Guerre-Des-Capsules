@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libpulse0
+          sudo apt-get install -y libpulse0 xvfb
 
       - name: Download Godot Engine
         run: |
@@ -27,7 +27,7 @@ jobs:
 
       - name: Build the project
         run: |
-          ./godot/Godot_v3.2.3-stable_x11.64 --export "Windows Desktop" build/Build.exe
+          xvfb-run ./godot/Godot_v3.2.3-stable_x11.64 --export "Windows Desktop" build/Build.exe
 
       - name: Prepare Build.zip
         run: |
