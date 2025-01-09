@@ -1,9 +1,7 @@
 # Godot-specific ignores
 *.import
 .import/
-export.cfg
-export_presets.cfg
-Build/
+build/
 Build.zip
 
 # Mono-specific ignores
