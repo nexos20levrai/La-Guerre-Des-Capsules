@@ -17,13 +17,12 @@ jobs:
 
       - name: Download Godot Engine
         run: |
-          wget https://downloads.tuxfamily.org/godotengine/3.2.3/Godot_v3.2.3-stable_mono_x11.64.zip
-          unzip Godot_v3.2.3-stable_mono_x11.64.zip -d godot
-          mv godot/Godot_v3.2.3-stable_mono_x11.64 ./godot/Godot
+          wget https://github.com/godotengine/godot-builds/releases/download/3.2.3-stable/Godot_v3.2.3-stable_x11.64.zip
+          unzip Godot_v3.2.3-stable_x11.64.zip -d godot
 
       - name: Build the project
         run: |
-          ./godot/Godot --export "Windows Desktop" build/Build.exe
+          ./godot/Godot_v3.2.3-stable_x11.64 --export "Windows Desktop" build/Build.exe
 
       - name: Prepare Build.zip
         run: |
@@ -36,7 +35,7 @@ jobs:
         uses: actions/create-release@v1
         with:
           tag_name: v${{ github.run_number }}
-          release_name: "La Guerre Des Capsules v${{ github.run_number }}"
+          release_name: "Draft Release v${{ github.run_number }}"
           draft: true
           token: ${{ secrets.GITHUB_TOKEN }}
 
