@@ -608,7 +608,6 @@ func instance_sniper_overlay():
 
 func _on_weapon_out_of_ads():
 	set_is_ads(false)
-	emit_signal("on_reload")
 
 func _on_weapon_reloaded():
 	if is_network_master():

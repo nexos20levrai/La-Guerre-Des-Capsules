@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource( 1 )
-mouse_sensitivity = 0.06
+mouse_sensitivity = 0.2
 controller_sensitivity = 0.08
