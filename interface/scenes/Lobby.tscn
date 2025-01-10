@@ -48,7 +48,7 @@ margin_right = 1820.0
 margin_bottom = 111.0
 
 [node name="Label" type="Label" parent="MainContainer/VBoxContainer/TitleContainer"]
-margin_right = 1727.0
+margin_right = 1720.0
 margin_bottom = 111.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 6 )
@@ -56,12 +56,12 @@ text = "La Guerre Des Capsules"
 
 [node name="Label2" type="Label" parent="MainContainer/VBoxContainer/TitleContainer"]
 modulate = Color( 0.545098, 0.545098, 0.545098, 1 )
-margin_left = 1731.0
+margin_left = 1724.0
 margin_right = 1820.0
 margin_bottom = 111.0
 size_flags_vertical = 5
 custom_fonts/font = ExtResource( 2 )
-text = "v0.1 beta"
+text = "v0.2 beta"
 valign = 2
 
 [node name="HSeparator" type="HSeparator" parent="MainContainer/VBoxContainer"]
@@ -570,7 +570,6 @@ custom_constants/separation = 15
 alignment = 2
 
 [node name="CreditsButton" type="Button" parent="MainContainer/VBoxContainer/Menu2Container/LogContainer/CreditsContainer"]
-visible = false
 margin_left = 1151.0
 margin_right = 1276.0
 margin_bottom = 60.0

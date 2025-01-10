@@ -153,6 +153,10 @@ func _on_player_kill_streak(id,kills):
 			text = "[color=%s]%s[/color] est sur une QUINZE séquence de victimes !" % [color,player_name]
 		20:
 			text = "D'accord. Quelqu'un doit faire quelque chose à propos de [color=%s]%s[/color]. Vingt victoires incontestées !" % [color,player_name]
+			AudioServer.set_bus_mute(AudioServer.get_bus_index("Musique"), true)
+			var audio_player: AudioStreamPlayer = $AudioStreamPlayer
+			if audio_player:
+				audio_player.play()
 	if kills > 20:
 		text = "Y a-t-il quelqu'un ? [color=%s]%s[/color] est en train de tuer !" % [color,player_name]
 	if text != "": chat_log.create_entry(text)

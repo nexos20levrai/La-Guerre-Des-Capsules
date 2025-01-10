@@ -1,8 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://interface/resources/HUDBigFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/zekton rg.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://interface/resources/HUDSmallFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://interface/scripts/Credits.gd" type="Script" id=4]
+[ext_resource path="res://assets/audio/Générique JMLP (parodie Bob l'éponge par Ganesh2).wav" type="AudioStream" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+font_data = ExtResource( 2 )
 
 [node name="Credits" type="Control"]
 anchor_right = 1.0
@@ -16,22 +26,29 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "JMLP"
 
 [node name="MainContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 7.55103
-margin_top = -241.632
-margin_right = 7.55103
-margin_bottom = 204.368
+margin_left = -184.0
+margin_top = -240.0
+margin_right = 156.0
+margin_bottom = 206.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VContainer" type="VBoxContainer" parent="MainContainer"]
-margin_left = 784.0
+margin_left = 954.0
 margin_top = 724.0
-margin_right = 1136.0
+margin_right = 1306.0
 margin_bottom = 802.0
 custom_constants/separation = 80
 
@@ -40,6 +57,9 @@ margin_right = 352.0
 margin_bottom = 78.0
 size_flags_horizontal = 3
 custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="MainContainer/VContainer/CreatorContainer"]
 modulate = Color( 0.545098, 0.521569, 0.521569, 1 )
@@ -56,33 +76,35 @@ margin_bottom = 78.0
 custom_fonts/font = ExtResource( 1 )
 text = "NeXoS_20 et Arka Ui"
 align = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -100.0
-custom_constants/margin_right = 70
-custom_constants/margin_bottom = 50
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-margin_right = 1850.0
-margin_bottom = 50.0
-alignment = 2
+[node name="Label3" type="Label" parent="."]
+visible = false
+margin_left = 499.184
+margin_top = 451.626
+margin_right = 1425.18
+margin_bottom = 572.626
+custom_fonts/font = SubResource( 1 )
+text = "Jean-Marie Le Pen !!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="BackButton" type="Button" parent="MarginContainer/HBoxContainer"]
-margin_left = 1725.0
-margin_right = 1850.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 125, 50 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_fonts/font = ExtResource( 3 )
-text = "Retour"
+[node name="Button" type="Button" parent="."]
+margin_left = 776.0
+margin_top = 520.0
+margin_right = 1114.0
+margin_bottom = 570.0
+custom_fonts/font = SubResource( 2 )
+shortcut_in_tooltip = false
+text = "                                                                                                                                                                   "
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Tween" type="Tween" parent="."]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
-[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

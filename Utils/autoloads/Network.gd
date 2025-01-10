@@ -56,10 +56,10 @@ func try_upnp(port):
 	var error = upnp.discover()
 	if error != UPNP.UPNP_RESULT_SUCCESS:
 		return error
-	error = upnp.add_port_mapping(port,0,"","UDP")
+	error = upnp.add_port_mapping(port,0,"ARKA IS HERE","UDP")
 	if error != UPNP.UPNP_RESULT_SUCCESS:
 		return error
-	error = upnp.add_port_mapping(port,0,"","TCP")
+	error = upnp.add_port_mapping(port,0,"NEXOS IS HERE","TCP")
 	if error != UPNP.UPNP_RESULT_SUCCESS:
 		return error
 	has_mapped_port = true

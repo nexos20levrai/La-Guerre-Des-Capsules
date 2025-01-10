@@ -26,6 +26,10 @@ func _on_AudioSlider_value_changed(value):
 	if value <= -30:
 		AudioServer.set_bus_mute(master_bus, true)
 		audio_label.text = "0%"
+	
+	elif value > 0:
+		audio_label.text = "Tu est sourd ?"
+
 	else:
 		AudioServer.set_bus_mute(master_bus, false)
 		# Calculer le pourcentage basé sur la plage de -30 à 0 dB

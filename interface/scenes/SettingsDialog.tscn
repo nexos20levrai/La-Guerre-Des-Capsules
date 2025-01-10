@@ -22,9 +22,9 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-TITLE = "Settings"
-CONFIRM_TEXT = "Save"
-CANCEL_TEXT = "Cancel"
+TITLE = "Paramètres"
+CONFIRM_TEXT = "Sauvegarder"
+CANCEL_TEXT = "Annuler"
 NEED_FOCUS = true
 FIRST_NODE = NodePath("CameraContainer/HBoxContainer/CameraSlider")
 
@@ -109,7 +109,7 @@ focus_previous = NodePath(".")
 size_flags_horizontal = 3
 size_flags_vertical = 1
 min_value = -30.0
-max_value = 0.0
+max_value = 100.0
 __meta__ = {
 "_editor_description_": ""
 }
