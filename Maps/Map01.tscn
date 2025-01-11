@@ -109,9 +109,7 @@ transform = Transform( 0.666506, 0, 0.745499, 0, 1, 0, -0.745499, 0, 0.666506, 2
 [node name="container" parent="Level/Props" instance=ExtResource( 22 )]
 transform = Transform( -0.810021, 0, 0.586401, 0, 1, 0, -0.586401, 0, -0.810021, 34.554, 1, 27.5629 )
 
-[node name="CSGCombiner2" type="CSGCombiner" parent="Level" groups=[
-"World",
-]]
+[node name="CSGCombiner2" type="CSGCombiner" parent="Level" groups=["World"]]
 use_in_baked_light = true
 use_collision = true
 collision_layer = 2
@@ -210,9 +208,7 @@ width = 14.0
 height = 12.0
 material = ExtResource( 1 )
 
-[node name="CSGCombiner3" type="CSGCombiner" parent="Level" groups=[
-"World",
-]]
+[node name="CSGCombiner3" type="CSGCombiner" parent="Level" groups=["World"]]
 use_in_baked_light = true
 use_collision = true
 collision_layer = 2
@@ -364,9 +360,7 @@ use_in_baked_light = true
 height = 12.0
 material = ExtResource( 1 )
 
-[node name="CSGCombiner4" type="CSGCombiner" parent="Level" groups=[
-"World",
-]]
+[node name="CSGCombiner4" type="CSGCombiner" parent="Level" groups=["World"]]
 use_in_baked_light = true
 use_collision = true
 collision_layer = 2
@@ -676,8 +670,8 @@ transform = Transform( -0.843325, 0, 0.537403, 0, 1, 0, -0.537403, 0, -0.843325,
 
 [node name="DeathArea" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14, 0 )
-monitorable = false
 collision_layer = 0
+monitorable = false
 
 [node name="CollisionShape" type="CollisionShape" parent="DeathArea"]
 shape = SubResource( 1 )
@@ -740,6 +734,7 @@ bus = "Musique"
 
 [node name="KillSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
+
 [connection signal="_on_player_can_spawn" from="CanvasLayer/MainHUD" to="." method="_on_player_can_spawn"]
 [connection signal="on_exit_to_lobby" from="CanvasLayer/MainHUD" to="CanvasLayer/Lobby" method="_on_exit_to_lobby"]
 [connection signal="on_game_begin" from="CanvasLayer/Lobby" to="." method="_on_game_begin"]
