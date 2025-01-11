@@ -682,9 +682,10 @@ environment = ExtResource( 2 )
 [node name="Lights" type="Node" parent="."]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="Lights"]
-transform = Transform( -0.724388, 0.470296, -0.504066, 0, 0.731175, 0.68219, 0.689392, 0.494171, -0.529655, 0, 26.2461, -30.6581 )
+transform = Transform( -0.724388, 0.470296, -0.504066, 0, 0.731175, 0.68219, 0.689392, 0.49417, -0.529655, 0, 26.2461, -30.6581 )
 light_color = Color( 0.94902, 0.854902, 0.780392, 1 )
-light_energy = 2.93
+light_energy = 0.0
+light_indirect_energy = 0.0
 shadow_enabled = true
 
 [node name="RoofLight6" parent="Lights" instance=ExtResource( 5 )]
