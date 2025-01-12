@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Actors/Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Actors/Scripts/PlayerController.gd" type="Script" id=2]
@@ -32,6 +32,8 @@ albedo_color = Color( 0.956863, 0.945098, 0.0823529, 1 )
 material = SubResource( 2 )
 mid_height = 3.0
 radial_segments = 16
+
+[sub_resource type="Skin" id=10]
 
 [sub_resource type="CapsuleShape" id=4]
 height = 3.0
@@ -76,9 +78,7 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 0, -0.32 ), Vector3( 0, 0.03, -0.32 ), Vector3( 0, 0, -0.32 ) ]
 }
 
-[node name="Player" type="KinematicBody" groups=[
-"Player",
-]]
+[node name="Player" type="KinematicBody" groups=["Player"]]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
 collision_mask = 3
 script = ExtResource( 1 )
@@ -88,6 +88,7 @@ MELEE_COLOR = Color( 0.972549, 0.917647, 0.917647, 0.270588 )
 [node name="Mesh" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.50113, 0.488986 )
 mesh = SubResource( 3 )
+skin = SubResource( 10 )
 material/0 = ExtResource( 15 )
 
 [node name="Body" type="CollisionShape" parent="."]
@@ -250,9 +251,6 @@ grow_horizontal = 2
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="WeaponView" type="TextureRect" parent="CenterContainer"]
 visible = false
@@ -281,4 +279,5 @@ __meta__ = {
 }
 
 [node name="HitMarker" parent="CanvasLayer" instance=ExtResource( 14 )]
+
 [connection signal="tree_exiting" from="." to="." method="_on_Player_tree_exiting"]

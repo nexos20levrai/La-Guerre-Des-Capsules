@@ -23,7 +23,6 @@ ADS_POSITION = Vector3( -0.423, 0.29, 0.428 )
 transform = Transform( 1, 9.31323e-10, -9.31323e-10, 0, 0.3, 0, 0, -2.91038e-11, 0.3, 0, 0, 0 )
 layers = 2
 mesh = SubResource( 1 )
-material/0 = null
 
 [node name="Muzzle" type="Spatial" parent="Model"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 1.42109e-14, 0, 1, 0.585944, 0, 1.19209e-07 )

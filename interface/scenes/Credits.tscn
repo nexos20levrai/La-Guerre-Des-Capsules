@@ -94,9 +94,9 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="."]
-margin_left = 776.0
-margin_top = 520.0
-margin_right = 1114.0
+margin_left = 756.0
+margin_top = 471.0
+margin_right = 1132.0
 margin_bottom = 570.0
 custom_fonts/font = SubResource( 2 )
 shortcut_in_tooltip = false
@@ -107,4 +107,5 @@ __meta__ = {
 }
 
 [node name="Tween" type="Tween" parent="."]
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

@@ -11,9 +11,6 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color( 1, 1, 1, 0.54902 )
@@ -362,8 +359,8 @@ focus_next = NodePath("../../../LoadoutContainer/PrimaryOption")
 focus_previous = NodePath("../../../TypeContainer/CancelButton")
 size_flags_horizontal = 3
 theme = ExtResource( 4 )
-custom_fonts/font = ExtResource( 2 )
 custom_constants/arrow_margin = 3
+custom_fonts/font = ExtResource( 2 )
 toggle_mode = false
 
 [node name="LoadoutSeparator" type="VSeparator" parent="MainContainer/VBoxContainer/MenuContainer"]
@@ -409,8 +406,8 @@ focus_next = NodePath("../SecondaryOption")
 focus_previous = NodePath("../../LooksContainer/ColorPicker/ColorOption")
 size_flags_horizontal = 3
 theme = ExtResource( 4 )
-custom_fonts/font = ExtResource( 2 )
 custom_constants/arrow_margin = 3
+custom_fonts/font = ExtResource( 2 )
 toggle_mode = false
 
 [node name="WeaponLabel2" type="Label" parent="MainContainer/VBoxContainer/MenuContainer/LoadoutContainer"]
@@ -432,8 +429,8 @@ focus_next = NodePath("../../FinalContainer/BeginButton")
 focus_previous = NodePath("../PrimaryOption")
 size_flags_horizontal = 3
 theme = ExtResource( 4 )
-custom_fonts/font = ExtResource( 2 )
 custom_constants/arrow_margin = 3
+custom_fonts/font = ExtResource( 2 )
 toggle_mode = false
 
 [node name="FinalSeparator" type="VSeparator" parent="MainContainer/VBoxContainer/MenuContainer"]
@@ -596,6 +593,7 @@ text = "Quitter"
 
 [node name="Credits" parent="." instance=ExtResource( 5 )]
 visible = false
+
 [connection signal="pressed" from="MainContainer/VBoxContainer/MenuContainer/NewContainer/HostAGameButton" to="." method="_on_HostAGameButton_pressed"]
 [connection signal="pressed" from="MainContainer/VBoxContainer/MenuContainer/NewContainer/JoinAGameButton" to="." method="_on_JoinAGameButton_pressed"]
 [connection signal="text_changed" from="MainContainer/VBoxContainer/MenuContainer/TypeContainer/IDName/IDText" to="." method="_on_IDText_text_changed"]
